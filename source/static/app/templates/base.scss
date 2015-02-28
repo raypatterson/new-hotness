@@ -1,6 +1,29 @@
+// Begin Modernizr
+
+/* uncss:ignore */
+html {
+
+  .cssgradients {
+    background-image: linear-gradient(top, #555, #333);
+  }
+
+  .no-cssgradients {
+    background: red;
+  }
+}
+
+// End Modernizr
+
+
+// Begin used selectors --> Will be left after UnCSS task
+
 h1 {
   font-size: 5rem;
 }
+
+// End used selectors
+
+// Begin unused selectors --> Will be gone after UnCSS task
 
 #unused-id {
   background-color: red;
@@ -9,3 +32,5 @@ h1 {
 .unused-class {
   background-color: red;
 }
+
+// End unused selectors

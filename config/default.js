@@ -4,13 +4,13 @@
 
 module.exports = {
 
-	debug: false,
+  debug: false,
 
-	server: {
-		port: 5000,
-		protocol: null,
-		hostname: null
-	},
+  server: {
+    port: 5000,
+    protocol: null,
+    hostname: null
+  },
 
-	dest: 'dist'
+  dest: 'dist'
 };

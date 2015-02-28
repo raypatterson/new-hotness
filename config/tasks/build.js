@@ -1,5 +1,8 @@
 'use-strict';
 
 module.exports = {
-  sequence: ['webpack']
+  sequence: [
+    'webpack',
+    'modernizr'
+  ]
 };

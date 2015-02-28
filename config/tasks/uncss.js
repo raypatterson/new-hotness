@@ -5,8 +5,6 @@ var rek = require('rekuire');
 
 var cfg = rek('config');
 
-// var common_dir = path.join(cfg.dest, 'common');
-
 module.exports = {
   cwd: cfg.dest,
   inputs: [{
@@ -18,12 +16,12 @@ module.exports = {
     },
     css: {
       src: [
-        'common/**/*.css'
+        path.join(cfg.dir.common, '**/*.css')
       ]
     }
   }, {
     html: {
-      // cwd: defaults to dir of css file
+      // if no 'cwd:' defined, glob pattern is confined to root dir of css file
       src: [
         '*.html'
       ]
@@ -31,7 +29,7 @@ module.exports = {
     css: {
       src: [
         '**/*.css',
-        '!common/**/*.css'
+        '!' + path.join(cfg.dir.common, '**/*.css')
       ]
     }
   }],

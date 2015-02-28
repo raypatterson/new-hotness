@@ -5,5 +5,5 @@ var rek = require('rekuire');
 var cfg = rek('config');
 
 module.exports = {
-  dest: cfg.dest
+  patterns: [cfg.dest]
 };

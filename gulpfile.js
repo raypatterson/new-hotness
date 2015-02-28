@@ -14,7 +14,7 @@ var cfg = require('./config');
 var rek = require('rekuire');
 
 // Module gets confused with same name files
-rek.ignore(cfg.dir.src);
+rek.ignore(cfg.dir.cwd);
 
 // Construct dynamic values
 // TODO: Find a more elegant way of doing this
