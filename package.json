@@ -1,0 +1,36 @@
+{
+  "name": "project-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "autoprefixer-loader": "^1.1.0",
+    "browser-sync": "^2.2.1",
+    "css-loader": "^0.9.1",
+    "del": "^1.1.1",
+    "extract-text-webpack-plugin": "^0.3.8",
+    "globby": "^1.2.0",
+    "gulp": "^3.8.11",
+    "gulp-load-plugins": "^0.8.0",
+    "gulp-sequence": "^0.3.2",
+    "gulp-uncss": "^1.0.0",
+    "gulp-webpack": "^1.2.0",
+    "html-webpack-plugin": "^1.1.0",
+    "lodash": "^3.3.0",
+    "multi-glob": "^0.4.0",
+    "node-path": "0.0.3",
+    "normalize.css": "^3.0.2",
+    "open": "0.0.5",
+    "rekuire": "^0.1.9",
+    "require-directory": "^2.1.0",
+    "sass-loader": "^0.4.0-beta.1",
+    "style-loader": "^0.8.3",
+    "webpack": "^1.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT"
+}
