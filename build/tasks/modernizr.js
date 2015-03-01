@@ -16,7 +16,6 @@ module.exports = function(gulp, $, cfg) {
       cwd: common_dir
     })[0];
 
-    console.log('common_filename', common_filename);
     var commmon = gulp.src(common_src, {
       cwd: common_dir
     });
@@ -25,7 +24,6 @@ module.exports = function(gulp, $, cfg) {
         cwd: task_cfg.cwd
       })
       .pipe($.modernizr('not-writing-to-file-system', task_cfg.settings));
-
 
     return merge(modernizr, commmon)
       .pipe($.concat(common_filename))
