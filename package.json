@@ -1,7 +1,7 @@
 {
-  "name": "project-boilerplate",
+  "name": "new-hotness",
   "version": "1.0.0",
-  "description": "",
+  "description": "A proving ground",
   "main": "gulpfile.js",
   "dependencies": {
     "autoprefixer-loader": "^1.1.0",
@@ -9,6 +9,7 @@
     "css-loader": "^0.9.1",
     "del": "^1.1.1",
     "extract-text-webpack-plugin": "^0.3.8",
+    "file-loader": "^0.8.1",
     "globby": "^1.2.0",
     "gulp": "^3.8.11",
     "gulp-concat": "^2.5.2",
@@ -31,6 +32,7 @@
     "require-directory": "^2.1.0",
     "sass-loader": "^0.4.0-beta.1",
     "style-loader": "^0.8.3",
+    "url-loader": "^0.5.5",
     "webpack": "^1.6.0"
   },
   "devDependencies": {},

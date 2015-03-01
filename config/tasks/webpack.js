@@ -63,33 +63,43 @@ for (page_dir in entry) {
   }));
 };
 
+var modulesDirectories = [
+  app_dir,
+  'node_modules',
+  'bower_components'
+];
+
+var loaders = [{
+  test: /\.scss$/,
+  loader: ExtractTextPlugin.extract(
+    'style',
+    'css!autoprefixer!sass?' +
+    'outputStyle=expanded' +
+    '&' +
+    modulesDirectories.join('includePaths[]=&')
+  )
+}, {
+  test: /\.css$/,
+  loader: ExtractTextPlugin.extract(
+    'style',
+    'css'
+  )
+}, {
+  test: /\.woff$/,
+  loader: 'url?limit=10000&minetype=application/font-woff'
+}, {
+  test: /\.(ttf|eot|svg)$/,
+  loader: 'file'
+}];
+
 module.exports = {
   resolve: {
-    modulesDirectories: [
-      app_dir,
-      'node_modules',
-      'bower_components'
-    ]
+    modulesDirectories: modulesDirectories
   },
   entry: entry,
   plugins: plugins,
   module: {
-    loaders: [{
-      test: /\.scss$/,
-      loader: ExtractTextPlugin.extract(
-        'style',
-        'css!autoprefixer!sass?' +
-        'outputStyle=expanded' +
-        '&' +
-        'includePaths[]=' + app_dir
-      )
-    }, {
-      test: /\.css$/,
-      loader: ExtractTextPlugin.extract(
-        'style',
-        'css'
-      )
-    }]
+    loaders: loaders
   },
   output: {
     filename: path.join('[name]', BUNDLE_FILENAMES.js)

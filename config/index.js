@@ -8,11 +8,20 @@ var rek = require('rekuire');
 
 var logger = rek('build/utils/logger').get('config');
 
-// Static config data
-var static_cfg = require('./static');
+// Protected config data (Cannot be overridden)
+var protected_cfg = require('./protected');
+
+// Default config data
+var default_cfg = require('./default');
+
+// Project config data
+var project_cfg = require('./project');
+
+// Override Default data with Project data
+default_cfg = _.assign(default_cfg, project_cfg);
 
 // Active environment ID
-var env = process ? process.env.NODE_ENV || static_cfg.env_type.DEVELOPMENT : static_cfg.env_type.DEVELOPMENT;
+var env = process ? process.env.NODE_ENV || protected_cfg.env_type.DEVELOPMENT : protected_cfg.env_type.DEVELOPMENT;
 
 // CLI config data
 var options = {
@@ -26,39 +35,31 @@ var options = {
 var cli_cfg = minimist(process.argv.slice(2), options);
 
 // Validate env value
-if (!_.includes(static_cfg.env_type, cli_cfg.env)) {
+if (!_.includes(protected_cfg.env_type, cli_cfg.env)) {
   [
     '******************************************************',
     '  Warning:',
     '    Invalid \'env\' value \'' + cli_cfg.env + '\'',
-    '    Defaulting to \'' + static_cfg.env_type.DEVELOPMENT + '\'',
+    '    Defaulting to \'' + protected_cfg.env_type.DEVELOPMENT + '\'',
     '******************************************************'
   ].map(function(msg) {
     logger.warn(msg);
   });
+
+  cli_cfg.env = protected_cfg.env_type.DEVELOPMENT;
 }
 
-cli_cfg.env = static_cfg.env_type.DEVELOPMENT;
-
-static_cfg = _.assign(static_cfg, cli_cfg);
-
-// Default config data
-var default_cfg = require('./default');
-
-// Project config data
-var project_cfg = require('./project');
-
-// Override Default data with Project data
-default_cfg = _.assign(default_cfg, project_cfg);
+// Override Default data with CLI data
+default_cfg = _.assign(default_cfg, cli_cfg);
 
 // Environment config data
-var env_cfg = require('./envs/' + static_cfg.env);
+var env_cfg = require('./envs/' + default_cfg.env);
 
 // Override Default data with Environment data
 default_cfg = _.assign(default_cfg, env_cfg);
 
-// Add Default data to Static data (Default will not override Static)
-static_cfg = _.defaults(static_cfg, default_cfg);
+// Add Default data to protected data (Will not be overridden)
+protected_cfg = _.defaults(protected_cfg, default_cfg);
 
 // Export
-module.exports = static_cfg;
+module.exports = protected_cfg;
