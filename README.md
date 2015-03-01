@@ -1,8 +1,22 @@
 # New Hotness
 
-This is a proving ground for:
+This is a proving ground for the following features:
 
-- A modular Gulp based build task manager
-- A multiple entry point webpack configuration
-- A dynamic UnCSS configuration
-- Multiple local server options (so far only BrowserSync). 
+- Modular Gulp based build task manager
+- Multiple entry point webpack configuration
+- Dynamic UnCSS configuration
+- Dynamic Modernizr configuration
+- Local BrowserSync server
+
+## TODO
+
+### Production optimizations
+- Minify files
+- Rev files
+- Removed unused JavaScript with Google Closure Compiler
+
+### Build Tasks
+- Code linting
+- Font loading
+- Image processing
+- Favicon generating
