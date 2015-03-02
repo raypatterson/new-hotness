@@ -1,5 +1,7 @@
 'use-strict';
 
+var _ = require('lodash');
+
 var gulp = require('gulp');
 
 // Gulp plugins
@@ -20,8 +22,11 @@ rek.ignore(cfg.dir.cwd);
 // TODO: Find a more elegant way of doing this
 cfg.dest = cfg.dir[cfg.dest];
 
-// Add build tasks config data
-cfg.tasks = require('require-directory')(module, 'config/tasks');
+// Ensure tasks config object or use defaults
+cfg.tasks = cfg.tasks || {};
+
+// Merge build task config data
+cfg.tasks = _.merge(cfg.tasks, require('require-directory')(module, 'config/tasks'));
 
 // Initialize build tasks
 for (task in cfg.tasks) {

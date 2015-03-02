@@ -7,12 +7,12 @@ This is a proving ground for the following features:
 - Dynamic UnCSS configuration
 - Dynamic Modernizr configuration
 - Local BrowserSync server
+- HTML, CSS, JS, JSON minification
+- Inlined JSON data objects
 
 ## TODO
 
 ### Production optimizations
-- Minify files
-- Rev files
 - Removed unused JavaScript with Google Closure Compiler
 
 ### Build Tasks

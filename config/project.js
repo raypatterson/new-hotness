@@ -17,5 +17,12 @@ module.exports = {
     // Build 'dest' sub directories
     libs: 'libs',
     common: 'common'
+  },
+
+  tasks: {
+    // Used by Modernizr and webpack tasks
+    modernizr: {
+      filename: 'modernizr.js'
+    }
   }
 };

@@ -1,4 +1,9 @@
 require('templates/base');
 require('./index.scss');
 
-module.exports = console.log('/');
+module.exports = function() {
+
+  var imageUrl = require('images/test.jpg');
+
+  console.log('imageUrl', imageUrl);
+}();
