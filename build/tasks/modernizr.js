@@ -14,7 +14,7 @@ module.exports = function(gulp, $, cfg) {
 
     var common_filename = glob.sync(common_src, {
       cwd: common_dir
-    })[0];
+    })[0]; // Assuming one common JS file... fow now.
 
     var commmon = gulp.src(common_src, {
       cwd: common_dir

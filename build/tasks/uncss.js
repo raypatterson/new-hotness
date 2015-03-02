@@ -5,53 +5,53 @@ var path = require('path');
 
 module.exports = function(gulp, $, cfg) {
 
-  // Alias the current dir
-  var cwd = cfg.tasks.uncss.cwd;
+  gulp.task('uncss', function(cb) {
 
-  // Task list
-  var sequence = [];
+    // Alias the current dir
+    var cwd = cfg.tasks.uncss.cwd;
 
-  // Task compiler
-  var addTaskToSequence = function addTaskToSequence(task_cfg) {
+    // Task list
+    var sequence = [];
 
-    glob.sync(task_cfg.css.src, {
-        cwd: cwd
-      })
-      .map(function(src) {
+    // Task compiler
+    var addTaskToSequence = function addTaskToSequence(task_cfg) {
 
-        var dest = path.dirname(path.join(cwd, src));
+      glob.sync(task_cfg.css.src, {
+          cwd: cwd
+        })
+        .map(function(src) {
 
-        var id = path.join('uncss', dest);
+          var dest = path.dirname(path.join(cwd, src));
 
-        var html_cwd = task_cfg.html.cwd || dest;
+          var id = path.join('uncss', dest);
 
-        var html = glob.sync(task_cfg.html.src, {
-            cwd: html_cwd
-          })
-          .map(function(filename) {
-            return path.join(html_cwd, filename);
+          var html_cwd = task_cfg.html.cwd || dest;
+
+          var html = glob.sync(task_cfg.html.src, {
+              cwd: html_cwd
+            })
+            .map(function(filename) {
+              return path.join(html_cwd, filename);
+            });
+
+          gulp.task(id, function() {
+
+            return gulp.src(src, {
+                cwd: cwd
+              })
+              .pipe($.uncss({
+                html: html
+              }))
+              .pipe(gulp.dest(dest));
           });
 
-        gulp.task(id, function() {
-
-          return gulp.src(src, {
-              cwd: cwd
-            })
-            .pipe($.uncss({
-              html: html
-            }))
-            .pipe(gulp.dest(dest));
+          sequence.push(id);
         });
+    };
 
-        sequence.push(id);
-      });
-  };
-
-  cfg.tasks.uncss.inputs.map(function(input) {
-    addTaskToSequence(input);
-  });
-
-  gulp.task('uncss', function(cb) {
+    cfg.tasks.uncss.inputs.map(function(input) {
+      addTaskToSequence(input);
+    });
 
     // FIXME: There is an error when tasks are run in parallel
     $.sequence.apply(null, sequence)(cb);

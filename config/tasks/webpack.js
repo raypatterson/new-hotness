@@ -40,6 +40,18 @@ var plugins = [
   })
 ];
 
+if (cfg.env === cfg.env_type.PRODUCTION) {
+  plugins = plugins.concat(
+    new webpack.DefinePlugin({
+      'process.env': {
+        // This has effect on the react lib size
+        'NODE_ENV': cfg.env
+      }
+    }),
+    new webpack.optimize.DedupePlugin()
+  );
+};
+
 // Add HTML files
 var page_cfg;
 
@@ -93,6 +105,9 @@ var loaders = [{
 }];
 
 module.exports = {
+  src: [
+    '**/*.{js}'
+  ],
   resolve: {
     modulesDirectories: modulesDirectories
   },

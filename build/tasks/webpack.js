@@ -6,6 +6,7 @@ var webpack = require('webpack');
 module.exports = function(gulp, $, cfg) {
 
   gulp.task('webpack', function() {
+
     return gulp.src('**/*.{js}', {
         cwd: path.join(cfg.dir.cwd, cfg.dir.app)
       })
