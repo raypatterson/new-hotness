@@ -19,7 +19,7 @@ module.exports = {
         path.join(cfg.dir.common, '**/*.css')
       ]
     }
-  }, {
+  }, { // Page level
     html: {
       // if no 'cwd:' defined, glob pattern is confined to root dir of css file
       src: [
@@ -29,7 +29,8 @@ module.exports = {
     css: {
       src: [
         '**/*.css',
-        '!' + path.join(cfg.dir.common, '**/*.css')
+        '!' + path.join(cfg.dir.common, '**/*.css'),
+        '!' + path.join(cfg.dir.vendor, '**/*.css')
       ]
     }
   }],

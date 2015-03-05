@@ -1,4 +1,4 @@
-// Begin Modernizr
+// --- Begin Modernizr ---
 
 /* uncss:ignore */
 body {
@@ -12,8 +12,13 @@ body {
   }
 }
 
-// End Modernizr
+// --- End Modernizr ---
 
+body {
+
+  // TODO: Decide where to put images that are referenced this way
+  background-image: url('/images/test.jpg');
+}
 
 // Begin used selectors --> Will be left after UnCSS task
 

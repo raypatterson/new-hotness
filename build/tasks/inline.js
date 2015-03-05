@@ -46,7 +46,7 @@ module.exports = function(gulp, $, cfg) {
 
             var html = '' +
               '<script type="text/javascript">' +
-              '(function(window){window.' + task_cfg.dataKeyName + '=' + JSON.stringify(data) + ';})(this)' +
+              '(function(window){window.' + task_cfg.dataKeyName + '=' + JSON.stringify(data) + ';}(this))' +
               '</script>';
 
             $('body > script').first().before(html);

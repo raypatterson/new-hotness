@@ -1,6 +1,7 @@
 'use-strict';
 
 var rek = require('rekuire');
+var fs = require('fs-extra');
 var glob = require('globby');
 var path = require('path');
 var webpack = require('webpack');
@@ -10,10 +11,11 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var cfg = rek('config');
 
 var ROOT_DIR = '.';
-var LIBS_DIR = cfg.dir.libs;
+var VENDOR_DIR = cfg.dir.vendor;
 var COMMON_DIR = cfg.dir.common;
-var BUNDLE_FILENAMES = ['js', 'css', 'html'].reduce(function(o, extension) {
-  o[extension] = ['index', extension].join('.');
+var CONFIG_DIR = cfg.dir.config;
+var BUNDLE_FILENAMES = ['js', 'css', 'html'].reduce(function(o, i) {
+  o[i] = ['index', i].join('.');
   return o;
 }, {});
 
@@ -23,19 +25,39 @@ var pages_dir = path.join(app_dir, 'pages');
 var templates_dir = path.join(app_dir, 'templates');
 
 // Glob entry points from 'pages' dir
+// TODO: Clean up entry creation
 var entry = {};
+var chunks = [];
 var page_dir;
 
-glob.sync('**/*.js', {
+glob.sync([
+  '**/*.js',
+  '!' + path.join('**', CONFIG_DIR, '**')
+], {
   cwd: pages_dir
 }).map(function(val, idx) {
   page_dir = path.dirname(val);
   entry[page_dir] = path.join(pages_dir, page_dir);
+  chunks.push(page_dir);
 });
 
 // Add plugins
 var plugins = [
-  new webpack.optimize.CommonsChunkPlugin(COMMON_DIR, '[name]/' + BUNDLE_FILENAMES.js),
+  new webpack.optimize.OccurenceOrderPlugin(true),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: VENDOR_DIR,
+    filename: '[name]/' + BUNDLE_FILENAMES.js,
+    // We need to be extremely explicit about vendor chunks
+    // so a dedicated entry point is the easy way to manage
+    chunks: [VENDOR_DIR],
+    // With more entries, this ensures that no other module goes into the vendor chunk
+    minChunks: Infinity
+  }),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: COMMON_DIR,
+    filename: '[name]/' + BUNDLE_FILENAMES.js,
+    chunks: chunks
+  }),
   new ExtractTextPlugin(path.join('[name]', BUNDLE_FILENAMES.css), {
     allChunks: true
   })
@@ -46,24 +68,30 @@ var page_cfg;
 
 for (page_dir in entry) {
 
-  page_cfg = require(path.join(pages_dir, page_dir, 'config'));
-  page_cfg.title = [cfg.name, page_cfg.name].join(' | ');
+  page_cfg_path = path.join(pages_dir, page_dir, CONFIG_DIR);
+  page_cfg = fs.existsSync(page_cfg_path) ? require(page_cfg_path) : {};
+  page_cfg.title = page_cfg.name ? [cfg.name, page_cfg.name].join(' | ') : cfg.name;
 
   plugins.push(new HtmlWebpackPlugin({
     template: path.join(templates_dir, 'base.html'),
     filename: path.join(page_dir, BUNDLE_FILENAMES.html),
     config: page_cfg,
     js: {
+      modernizr: path.join(path.relative(page_dir, VENDOR_DIR), cfg.tasks.modernizr.filename),
+      vendor: path.join(path.relative(page_dir, VENDOR_DIR), BUNDLE_FILENAMES.js),
       common: path.join(path.relative(page_dir, COMMON_DIR), BUNDLE_FILENAMES.js),
-      bundle: BUNDLE_FILENAMES.js,
-      modernizr: path.join(path.relative(page_dir, LIBS_DIR), cfg.tasks.modernizr.filename)
+      bundle: BUNDLE_FILENAMES.js
     },
     css: {
+      vendor: path.join(path.relative(page_dir, VENDOR_DIR), BUNDLE_FILENAMES.css),
       common: path.join(path.relative(page_dir, COMMON_DIR), BUNDLE_FILENAMES.css),
       bundle: BUNDLE_FILENAMES.css
     }
   }));
 };
+
+// Add vendor entry point
+entry[VENDOR_DIR] = [path.join(app_dir, VENDOR_DIR)];
 
 var modulesDirectories = [
   app_dir,

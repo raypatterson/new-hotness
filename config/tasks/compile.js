@@ -2,10 +2,19 @@
 
 module.exports = {
   sequence: [
-    'clean',
+    'clean', [
+      'lintjs',
+      'stylejs'
+    ],
+    'todo',
     'build',
     'uncss',
-    'rev', ['mincss', 'minjs', 'minjson', 'minhtml'],
+    'rev', [
+      'minjson',
+      'minhtml',
+      'mincss',
+      'minjs'
+    ],
     'inline',
     'localhost'
   ]

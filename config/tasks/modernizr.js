@@ -11,7 +11,7 @@ module.exports = {
   src: [
     '**/*.{js,css}'
   ],
-  dest: path.join(cfg.dest, cfg.dir.libs),
+  dest: path.join(cfg.dest, cfg.dir.vendor),
   settings: {
     options: [
       'setClasses',

@@ -2,7 +2,10 @@
 
 module.exports = {
   sequence: [
-    'webpack',
+    'webpack', [
+      'lintcss',
+      'linthtml'
+    ],
     'modernizr'
   ]
 };

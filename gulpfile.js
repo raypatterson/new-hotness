@@ -20,6 +20,7 @@ rek.ignore(cfg.dir.cwd);
 
 // Construct dynamic values
 // TODO: Find a more elegant way of doing this
+cfg.root = __dirname;
 cfg.dest = cfg.dir[cfg.dest];
 
 // Ensure tasks config object or use defaults

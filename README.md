@@ -16,7 +16,10 @@ This is a proving ground for the following features:
 - Removed unused JavaScript with Google Closure Compiler
 
 ### Build Tasks
-- Code linting
-- Font loading
+- Linting HTML, CSS, JS, JSON
+- Remove vendor/library code from lint processes
+- Allow task folder structure
+- Styling HTML, CSS, JS, JSON
+- Documenting CSS, JS
 - Image processing
 - Favicon generating
