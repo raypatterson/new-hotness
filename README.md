@@ -7,7 +7,9 @@ This is a proving ground for the following features:
 - Dynamic UnCSS configuration
 - Dynamic Modernizr configuration
 - Local BrowserSync server
-- HTML, CSS, JS, JSON minification
+- HTML, CSS, JS & JSON minification
+- HTML, CSS, JS, JSON & Color linting
+- JS style validation
 - Inlined JSON data objects
 
 ## TODO
@@ -16,10 +18,8 @@ This is a proving ground for the following features:
 - Removed unused JavaScript with Google Closure Compiler
 
 ### Build Tasks
-- Linting HTML, CSS, JS, JSON
-- Remove vendor/library code from lint processes
-- Allow task folder structure
-- Styling HTML, CSS, JS, JSON
-- Documenting CSS, JS
 - Image processing
 - Favicon generating
+- Allow task folder structure
+- Styling HTML, CSS, JSON
+- Documenting CSS, JS

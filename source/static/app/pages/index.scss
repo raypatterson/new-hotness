@@ -1,11 +1,19 @@
 body {
   background: #66ffcc;
-}
 
-#unused-id {
-  background-color: red;
-}
+  /*
 
-.unused-class {
-  background-color: red;
+  Triggers colorguard task error
+
+  background-color: #6fe;
+
+  */
+
+  #unused-id {
+    background-color: red;
+  }
+
+  .unused-class {
+    background-color: red;
+  }
 }

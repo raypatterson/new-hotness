@@ -2,9 +2,16 @@
 
 module.exports = {
   sequence: [
+    [
+      'stylesass',
+      'stylejs',
+      'lintjson',
+      'lintjs'
+    ],
     'webpack', [
-      'lintcss',
-      'linthtml'
+      'lintcolor',
+      'linthtml',
+      'lintcss'
     ],
     'modernizr'
   ]
