@@ -3,16 +3,10 @@
 module.exports = {
   sequence: [
     [
-      'stylesass',
-      'stylejs',
-      'lintjson',
-      'lintjs'
+      'lintjs',
+      'lintjson'
     ],
-    'webpack', [
-      'lintcolor',
-      'linthtml',
-      'lintcss'
-    ],
+    'webpack',
     'modernizr'
   ]
 };

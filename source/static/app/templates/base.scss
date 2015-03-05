@@ -15,7 +15,7 @@ body {
 
 body {
   // TODO: Decide where to put images that are referenced this way
-  background-image: url('/images/test.jpg');
+  background-image: image-url('images/test.jpg');
 }
 
 // Begin used selectors --> Will be left after UnCSS task

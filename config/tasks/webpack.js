@@ -122,6 +122,9 @@ var loaders = [{
 }, {
   test: /\.(ttf|eot|svg)$/,
   loader: 'file'
+}, {
+  test: /\.(jpe?g$|gif|png)$/,
+  loader: 'file'
 }];
 
 // Add production configs

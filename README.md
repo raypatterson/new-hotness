@@ -10,6 +10,7 @@ This is a proving ground for the following features:
 - HTML, CSS, JS & JSON minification
 - HTML, CSS, JS, JSON & Color linting
 - JS style validation
+- SASS style formatting
 - Inlined JSON data objects
 
 ## TODO
@@ -19,6 +20,7 @@ This is a proving ground for the following features:
 
 ### Build Tasks
 - Image processing
+- Image spriting
 - Favicon generating
 - Allow task folder structure
 - Styling HTML, CSS, JSON

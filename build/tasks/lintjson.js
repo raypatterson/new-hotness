@@ -18,6 +18,8 @@ module.exports = function(gulp, $, cfg) {
 
         if (file.success) {
 
+          // Do nothing
+
         } else {
 
           [
