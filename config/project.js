@@ -17,7 +17,13 @@ module.exports = {
     // Build 'dest' sub directories
     vendor: 'vendor', // Separate 3rd party assets for clarity and to work around certain tasks
     common: 'common', // Assets common to all app entry points
-    config: 'config' // Any page or module specific configuration
+    config: 'config', // Any page or module specific configuration
+    // Asset type specific
+    images: 'images',
+    fonts: 'fonts',
+    data: 'data',
+    css: 'css',
+    js: 'js'
   },
 
   tasks: {

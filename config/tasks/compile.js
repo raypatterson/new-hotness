@@ -2,7 +2,12 @@
 
 module.exports = {
   sequence: [
-    ['clean', 'todo', 'stylesass', 'stylejs'],
+    [
+      'clean',
+      'todo',
+      'stylesass',
+      'stylejs'
+    ],
     'build',
     'uncss', [
       'lintcolor',
@@ -10,6 +15,7 @@ module.exports = {
       'lintcss'
     ],
     'rev', [
+      'minimg',
       'minjson',
       'minhtml',
       'mincss',

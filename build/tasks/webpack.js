@@ -7,6 +7,13 @@ module.exports = function(gulp, $, cfg) {
 
   gulp.task('webpack', function() {
 
+    var filterCss = $.filter(
+      [
+        '**/*.css',
+        '!**/vendor/**'
+      ]
+    );
+
     return gulp.src('**/*.{js}', {
         cwd: path.join(cfg.dir.cwd, cfg.dir.app)
       })

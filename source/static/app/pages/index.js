@@ -7,8 +7,8 @@ module.exports = (function() {
 
   'use strict';
 
-  var imageUrl = require('images/test.jpg');
+  // var imageUrl = require('images/test.jpg');
 
   // TODO: Decide where to put images that are referenced this way
-  console.log('imageUrl', imageUrl);
+  // console.log('imageUrl', imageUrl);
 }());

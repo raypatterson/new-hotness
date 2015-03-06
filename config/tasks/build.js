@@ -3,10 +3,13 @@
 module.exports = {
   sequence: [
     [
-      'lintjs',
-      'lintjson'
+      'lintjson',
+      'lintjs'
     ],
-    'webpack',
+    [
+  'webpack',
+  'copyimg'
+    ],
     'modernizr'
   ]
 };

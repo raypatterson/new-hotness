@@ -9,10 +9,13 @@ module.exports = function(gulp, $, cfg) {
 
     cfg.tasks.build.sequence = [
       [
-        'lintjs',
-        'lintjson'
+        'lintjson',
+        'lintjs'
       ],
-      'webpack',
+      [
+        'webpack',
+        'copyimg'
+      ],
       'modernizr'
     ];
 

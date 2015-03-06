@@ -72,19 +72,22 @@ for (page_dir in entry) {
   page_cfg = fs.existsSync(page_cfg_path) ? require(page_cfg_path) : {};
   page_cfg.title = page_cfg.name ? [cfg.name, page_cfg.name].join(' | ') : cfg.name;
 
+  var vendor_path = path.relative(page_dir, VENDOR_DIR);
+  var common_path = path.relative(page_dir, COMMON_DIR);
+
   plugins.push(new HtmlWebpackPlugin({
     template: path.join(templates_dir, 'base.html'),
     filename: path.join(page_dir, BUNDLE_FILENAMES.html),
     config: page_cfg,
     js: {
-      modernizr: path.join(path.relative(page_dir, VENDOR_DIR), cfg.tasks.modernizr.filename),
-      vendor: path.join(path.relative(page_dir, VENDOR_DIR), BUNDLE_FILENAMES.js),
-      common: path.join(path.relative(page_dir, COMMON_DIR), BUNDLE_FILENAMES.js),
+      modernizr: path.join(vendor_path, cfg.tasks.modernizr.filename),
+      vendor: path.join(vendor_path, BUNDLE_FILENAMES.js),
+      common: path.join(common_path, BUNDLE_FILENAMES.js),
       bundle: BUNDLE_FILENAMES.js
     },
     css: {
-      vendor: path.join(path.relative(page_dir, VENDOR_DIR), BUNDLE_FILENAMES.css),
-      common: path.join(path.relative(page_dir, COMMON_DIR), BUNDLE_FILENAMES.css),
+      vendor: path.join(vendor_path, BUNDLE_FILENAMES.css),
+      common: path.join(common_path, BUNDLE_FILENAMES.css),
       bundle: BUNDLE_FILENAMES.css
     }
   }));
@@ -92,6 +95,7 @@ for (page_dir in entry) {
 
 // Add vendor entry point
 entry[VENDOR_DIR] = [path.join(app_dir, VENDOR_DIR)];
+
 
 var modulesDirectories = [
   app_dir,
@@ -103,12 +107,20 @@ var loaders = [{
   test: /\.scss$/,
   loader: ExtractTextPlugin.extract(
     'style',
-    'css!autoprefixer!sass?' +
+    'css?' +
+    // 'root=' + app_dir + // Allows root relative paths in SASS
+    '!autoprefixer' +
+    '!sass?' +
     'outputStyle=expanded' +
     modulesDirectories.reduce(function(paths, path) {
       paths.push('&includePaths[]=' + path);
       return paths;
-    }, []).join('')
+    }, []).join(''), {
+      publicPath: '/'
+        // publicPath: function(url, prev, done) {
+        //   return './bar/'
+        // }
+    }
   )
 }, {
   test: /\.css$/,
@@ -117,14 +129,8 @@ var loaders = [{
     'css'
   )
 }, {
-  test: /\.woff[0-9]?$/,
-  loader: 'url?limit=10000&minetype=application/font-woff'
-}, {
-  test: /\.(ttf|eot|svg)$/,
-  loader: 'file'
-}, {
-  test: /\.(jpe?g$|gif|png)$/,
-  loader: 'file'
+  test: /(.*)\/fonts?\/(.*)\.(ttf|eot|svg|woff[0-9]?)$/,
+  loader: 'url?limit=10000&minetype=application/font-woff&name=' + path.join(cfg.dir.fonts, '[name].[ext]')
 }];
 
 // Add production configs
@@ -141,14 +147,14 @@ if (cfg.env === cfg.env_type.PRODUCTION) {
 
   loaders = loaders.concat({
     test: /\.(jpe?g|png|gif)$/i,
-    loader: 'image?bypassOnDebug&optimizationLevel=7&interlaced=false'
+    loader: 'image?bypassOnDebug&optimizationLevel=7&interlaced=false&name=[path][name].[ext]&context=' + app_dir
   });
 
 } else {
 
   loaders = loaders.concat({
     test: /\.(jpe?g|png|gif)$/i,
-    loader: 'url?limit=8192'
+    loader: 'url?limit=8192&name=[path][name].[ext]&context=' + app_dir
   });
 };
 
@@ -175,6 +181,10 @@ module.exports = {
     loaders: loaders
   },
   output: {
+    // publicPath: './foo/',
+    // publicPath: function(url, prev, done) {
+    //   return './foo/'
+    // },
     filename: path.join('[name]', BUNDLE_FILENAMES.js)
   }
 };
