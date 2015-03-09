@@ -58,6 +58,8 @@ var env_cfg = require('./envs/' + default_cfg.env);
 // Override Default data with Environment data
 default_cfg = _.assign(default_cfg, env_cfg);
 
+// Add production flag
+
 // Add Default data to protected data (Will not be overridden)
 protected_cfg = _.defaults(protected_cfg, default_cfg);
 

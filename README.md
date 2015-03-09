@@ -12,19 +12,23 @@ This is a proving ground for the following features:
 - JS style validation
 - SASS style formatting
 - Inlined JSON data objects
+- Image optimization
 
 ## TODO
+- Testing with Jest
+- Static typing with Flow
+- Scaffolding with Yeoman
 
 ### Production optimizations
-- Removed unused JavaScript with Google Closure Compiler
 - Use full Modernizr for development builds
+- Concat Common & Vendor JS & CSS (with usemin?)
+- Removed unused JavaScript with Google Closure Compiler
 
 ### Build Tasks
-- Image processing
-- Image spriting
-- Favicon generating
-- Add test runner
 - Allow task folder structure
+- Image sprites
+- Image conversion (PNG > JPG, PNG > SVG?)
+- Favicon generating
 - Add complexity, performance, size reports
 - Styling HTML, CSS, JSON
 - Documenting CSS, JS

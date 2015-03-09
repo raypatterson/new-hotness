@@ -1,21 +1,62 @@
 'use-strict';
 
+var _ = require('lodash');
+var fs = require('fs-extra');
 var path = require('path');
-var glob = require('globby');
-var merge = require('merge2');
+var modernizr = require('modernizr');
 
 module.exports = function(gulp, $, cfg) {
 
   var task_cfg = cfg.tasks.modernizr;
 
-  gulp.task('modernizr', function() {
+  var modernizr_dest = path.join(cfg.root, task_cfg.dest, task_cfg.filename);
 
-    // TOOD: If 'development' mode, inject all of Modernizr for speed
+  var modernizr_cfg = require('modernizr/lib/config-all.json');
 
-    return gulp.src(task_cfg.src, {
-        cwd: task_cfg.cwd
-      })
-      .pipe($.modernizr(task_cfg.filename, task_cfg.settings))
-      .pipe(gulp.dest(task_cfg.dest));
+  // Exclude tests
+  _.each(task_cfg.settings.excludeTests, function(excludeTest) {
+
+    _.remove(modernizr_cfg['feature-detects'], function(testName) {
+
+      return testName === excludeTest;
+    });
+  });
+
+  gulp.task('modernizr', function(cb) {
+
+    if (task_cfg.crawl === true) {
+
+      gulp.src(task_cfg.src, {
+          cwd: task_cfg.cwd
+        })
+        .pipe($.modernizr(task_cfg.filename, task_cfg.settings))
+        .pipe(gulp.dest(task_cfg.dest))
+        .on('end', cb);
+
+
+    } else {
+
+
+      if (fs.existsSync(modernizr_dest)) {
+
+        cb();
+
+      } else {
+
+        modernizr.build(modernizr_cfg, function(result) {
+
+          // console.log(result); // the build
+
+          fs.outputFile(modernizr_dest, result, function(err) {
+
+            if (err !== null) {
+              console.log(err);
+            }
+
+            cb();
+          })
+        });
+      }
+    }
   });
 };

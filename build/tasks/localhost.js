@@ -13,7 +13,10 @@ module.exports = function(gulp, $, cfg) {
     });
 
     var watcher = gulp.watch(
-      cfg.tasks.localhost.watch.files, ['build', bs.reload]
+      cfg.tasks.localhost.watch.files, [
+        'build',
+        bs.reload
+      ]
     );
 
     watcher.on('change', function(event) {
