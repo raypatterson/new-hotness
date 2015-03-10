@@ -24,7 +24,6 @@ This is a proving ground for the following features:
 - Removed unused JavaScript with Google Closure Compiler
 
 ### Build Tasks
-- Allow task folder structure
 - Image sprites
 - Image conversion (PNG > JPG, PNG > SVG?)
 - Favicon generating
