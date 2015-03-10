@@ -10,8 +10,6 @@
 ### FIXMEs
 | Filename | line # | FIXME
 |:------|:------:|:------
-| _archive/build.js | 7 | Something is mutating the parallel task string values into object literals... Maybe the sequence task?
-| _archive/uncss.js | 56 | There is an error when tasks are run in parallel
 | build/tasks/build.js | 9 | Something is mutating the parallel task string values into object literals... Maybe the sequence task?
 | build/tasks/process/uncss/index.js | 58 | There is an error when tasks are run in parallel
 | config/tasks/document/todo/index.js | 7 | Ironically, the 'src' prop needs some work...
