@@ -20,7 +20,6 @@ This is a proving ground for the following features:
 - Scaffolding with Yeoman
 
 ### Production optimizations
-- Concat Common & Vendor JS & CSS (with usemin?)
 - Removed unused JavaScript with Google Closure Compiler
 
 ### Build Tasks
