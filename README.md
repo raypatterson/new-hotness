@@ -18,6 +18,7 @@ This is a proving ground for the following features:
 - Testing with Jest
 - Static typing with Flow
 - Scaffolding with Yeoman
+- Continuous integration with TravisCI
 
 ### Production optimizations
 - Removed unused JavaScript with Google Closure Compiler

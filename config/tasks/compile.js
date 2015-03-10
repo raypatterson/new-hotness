@@ -2,26 +2,26 @@
 
 module.exports = {
   sequence: [
-    'clean',
-    'todo', [
-      'stylesass',
-      'stylejs'
+    'process/clean',
+    'document/todo', [
+      'style/sass',
+      'style/js'
     ],
     'build',
-    'uncss', [
-      'lintcolor',
-      'linthtml',
-      'lintcss'
+    'process/uncss', [
+      'lint/color',
+      'lint/html',
+      'lint/css'
     ],
-    'inline',
-    'rev', [
-      'minimg',
-      'minjson',
-      'minhtml',
-      'mincss',
-      'minjs'
+    'process/inline',
+    'process/rev', [
+      'minify/img',
+      'minify/json',
+      'minify/html',
+      'minify/css',
+      'minify/js'
     ],
-    'minpipe',
-    'localhost'
+    'minify/pipe',
+    'serve/browsersync'
   ]
 };

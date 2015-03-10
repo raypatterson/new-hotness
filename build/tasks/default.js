@@ -1,9 +1,11 @@
 'use-strict';
 
-module.exports = function(gulp, $, cfg) {
+module.exports = function(gulp, $, cfg, id) {
 
-  gulp.task('default', function(cb) {
+  gulp.task(id, function(cb) {
 
-    $.sequence.apply(null, cfg.tasks.default.sequence)(cb);
+    var task_cfg = cfg.tasks[id];
+
+    $.sequence.apply(null, task_cfg.sequence)(cb);
   });
 };

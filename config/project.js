@@ -28,7 +28,7 @@ module.exports = {
 
   tasks: {
     // Used by Modernizr and webpack tasks
-    modernizr: {
+    'process/modernizr': {
       filename: 'modernizr.js'
     }
   }

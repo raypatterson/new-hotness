@@ -1,5 +1,9 @@
 'use-strict';
 
 module.exports = {
-  sequence: ['clean', 'build', 'localhost']
+  sequence: [
+    'process/clean',
+    'build',
+    'serve/browsersync'
+  ]
 };

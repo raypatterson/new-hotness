@@ -1,24 +1,22 @@
 'use-strict';
 
-module.exports = function(gulp, $, cfg, id) {
+module.exports = function(gulp, $, cfg) {
 
-  gulp.task(id, function(cb) {
-
-    var task_cfg = cfg.tasks[id];
+  gulp.task('build', function(cb) {
 
     // FIXME: Something is mutating the parallel task string values into object literals... Maybe the sequence task?
     console.log('cfg.tasks.build.sequence', cfg.tasks.build.sequence);
 
     cfg.tasks.build.sequence = [
       [
-        'lint/json',
-        'lint/js'
+        'lintjson',
+        'lintjs'
       ],
       [
-        'process/webpack',
-        'process/copy'
+        'webpack',
+        'copyimg'
       ],
-      'process/modernizr'
+      'modernizr'
     ];
 
     console.log('cfg.tasks.build.sequence', cfg.tasks.build.sequence);
