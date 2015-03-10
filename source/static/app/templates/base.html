@@ -3,16 +3,27 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>{%=o.htmlWebpackPlugin.options.config.title%}</title>
+
   <script type="text/javascript" src="{%=o.htmlWebpackPlugin.options.js.modernizr%}"></script>
+
+  <!-- build:css {%=o.htmlWebpackPlugin.options.css.common%} -->
   <link rel="stylesheet" type="text/css" href="{%=o.htmlWebpackPlugin.options.css.vendor%}">
   <link rel="stylesheet" type="text/css" href="{%=o.htmlWebpackPlugin.options.css.common%}">
+  <!-- endbuild -->
+
   <link rel="stylesheet" type="text/css" href="{%=o.htmlWebpackPlugin.options.css.bundle%}">
 </head>
 <body>
+
   <h1>{%=o.htmlWebpackPlugin.options.config.title%}</h1>
+
   <img src="/images/test.jpg" alt="Test image">
+
+  <!-- build:js {%=o.htmlWebpackPlugin.options.js.common%} -->
   <script type="text/javascript" src="{%=o.htmlWebpackPlugin.options.js.vendor%}"></script>
   <script type="text/javascript" src="{%=o.htmlWebpackPlugin.options.js.common%}"></script>
+  <!-- endbuild -->
+
   <script type="text/javascript" src="{%=o.htmlWebpackPlugin.options.js.bundle%}"></script>
 </body>
 </html>
