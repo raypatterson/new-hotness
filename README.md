@@ -19,6 +19,8 @@ This is a proving ground for the following features:
 - Static typing with Flow
 - Scaffolding with Yeoman
 - Continuous integration with TravisCI
+- Content managment with Contentful
+- HTML generation with PhantomJS
 
 ### Production optimizations
 - Removed unused JavaScript with Google Closure Compiler
