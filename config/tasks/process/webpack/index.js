@@ -96,7 +96,6 @@ for (page_dir in entry) {
 // Add vendor entry point
 entry[VENDOR_DIR] = [path.join(app_dir, VENDOR_DIR)];
 
-
 var modulesDirectories = [
   app_dir,
   'node_modules',
