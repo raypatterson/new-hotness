@@ -4,6 +4,6 @@ module.exports = {
   sequence: [
     'compile',
     'process/gzip',
-    'publish/aws/s3'
+    'deploy/aws/s3'
   ]
 };
