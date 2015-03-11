@@ -7,4 +7,9 @@ before_install:
   - npm i -g gulp
 
 script:
-  - gulp compile
+  - gulp ci
+
+branches:
+  only:
+    - master
+    - /^deploy-.*$/

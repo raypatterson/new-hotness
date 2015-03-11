@@ -55,6 +55,8 @@ module.exports = function(gulp, $, cfg, id) {
       addTask(input);
     });
 
-    $.sequence(tasks, cb);
+    $.sequence.apply(null, tasks)(cb);
+    // FIXME: Bug goes away, bug comes back. Cannot run in parallel.
+    // $.sequence(tasks, cb);
   });
 };
