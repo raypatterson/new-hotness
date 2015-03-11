@@ -9,6 +9,9 @@ before_install:
 script:
   - gulp ci
 
+deploy:
+  skip_cleanup: true
+
 branches:
   only:
     - master
