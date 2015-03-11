@@ -15,10 +15,11 @@ This is a proving ground for the following features:
 - Image optimization
 
 ## TODO
+- Continuous integration with TravisCI
+- Deployment to AWS S3
 - Testing with Jest
 - Static typing with Flow
 - Scaffolding with Yeoman
-- Continuous integration with TravisCI
 - Content managment with Contentful
 - HTML generation with PhantomJS
 

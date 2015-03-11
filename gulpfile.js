@@ -29,24 +29,34 @@ cfg.dest = cfg.dir[cfg.dest];
 cfg.tasks = cfg.tasks || {};
 
 // Merge build task config data
-var task_name;
-var tasks_cfg = glob.sync(['**/*.js'], {
+var taskName;
+var taskConfigs = glob.sync(['**/*.js'], {
     cwd: './config/tasks'
   })
   .reduce(function(tasks, filepath) {
 
-    var task_name = path.basename(filepath, path.extname(filepath));
+    var taskName = path.basename(filepath, path.extname(filepath));
 
-    if (task_name === 'index') {
+    if (taskName === 'index') {
 
-      task_name = path.dirname(filepath);
+      // Format .../[name]/index.js
+      taskName = path.dirname(filepath);
+
+    } else {
+
+      // Format .../[name].js
+      taskName = path.join(path.dirname(filepath), taskName);
     }
 
-    tasks[task_name] = rek(path.join('config/tasks', task_name));
+    var taskPath = path.join('config/tasks', taskName);
+
+    tasks[taskName] = rek(taskPath);
+
     return tasks;
+
   }, {});
 
-_.merge(cfg.tasks, tasks_cfg);
+_.merge(cfg.tasks, taskConfigs);
 
 // Initialize build tasks
 for (task in cfg.tasks) {
