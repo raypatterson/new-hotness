@@ -7,6 +7,9 @@ var parallelize = require('concurrent-transform');
 module.exports = function(gulp, $, cfg, id) {
 
   console.log('process.env.S3_BUCKET_NAME', process.env.S3_BUCKET_NAME);
+  console.log('process.env.S3_BUCKET_NAME', process.env.S3_BUCKET_NAME);
+  console.log('process.env.S3_BUCKET_NAME', process.env.S3_BUCKET_NAME);
+  console.log('process.env.S3_BUCKET_NAME', process.env.S3_BUCKET_NAME);
 
   gulp.task(id, function() {
 
