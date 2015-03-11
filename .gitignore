@@ -81,5 +81,7 @@ bower_components
 
 # Project specific #
 ####################
+ignore
 public
 dist
+.awspublish*

@@ -13,10 +13,10 @@ module.exports = function(gulp, $, cfg, id) {
     var cwd = task_cfg.cwd;
 
     // Task list
-    var sequence = [];
+    var tasks = [];
 
     // Task compiler
-    var addTaskToSequence = function addTaskToSequence(task_cfg) {
+    var addTask = function addTask(task_cfg) {
 
       glob.sync(task_cfg.css.src, {
           cwd: cwd
@@ -47,15 +47,16 @@ module.exports = function(gulp, $, cfg, id) {
               .pipe(gulp.dest(dest));
           });
 
-          sequence.push(task_id);
+          tasks.push(task_id);
         });
     };
 
     task_cfg.inputs.map(function(input) {
-      addTaskToSequence(input);
+      addTask(input);
     });
 
-    // FIXME: There is an error when tasks are run in parallel
-    $.sequence.apply(null, sequence)(cb);
+    $.sequence.apply(null, tasks)(cb);
+    // FIXME: Bug goes away, bug comes back. Cannot run in parallel.
+    // $.sequence(tasks, cb);
   });
 };

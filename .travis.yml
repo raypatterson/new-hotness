@@ -1,12 +1,18 @@
 language: node_js
 
 node_js:
-  - 0.10
-  - 0.11
+  - 0.12
 
 before_install:
   - npm i -g gulp
-  - npm i
 
 script:
-  - gulp compile
+  - gulp ci
+
+deploy:
+  skip_cleanup: true
+
+branches:
+  only:
+    - master
+    - /^deploy-.*$/

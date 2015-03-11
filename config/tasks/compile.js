@@ -22,6 +22,6 @@ module.exports = {
       'minify/js'
     ],
     'minify/pipe'
-    // , 'serve/browsersync'
+    // 'serve/browsersync'
   ]
 };
