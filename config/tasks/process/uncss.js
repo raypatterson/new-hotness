@@ -16,7 +16,8 @@ module.exports = {
     },
     css: {
       src: [
-        path.join(cfg.dir.common, '**/*.css')
+        path.join(cfg.dir.common, '**/*.css'),
+        path.join(cfg.dir.vendor, '**/*.css')
       ]
     }
   }, { // Page level
