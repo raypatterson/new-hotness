@@ -10,7 +10,7 @@
 ### FIXMEs
 | Filename | line # | FIXME
 |:------|:------:|:------
-| build/tasks/build.js | 9 | Something is mutating the parallel task string values into object literals... Maybe the sequence task?
+| build/utils/sequencer.js | 9 | Something is mutating the parallel task string values into object literals... Maybe the sequence task?
 | build/tasks/process/uncss.js | 59 | Bug goes away, bug comes back. Cannot run in parallel.
 | config/tasks/document/todo.js | 7 | Ironically, the 'src' prop needs some work...
 | source/static/app/templates/base.js | 7 | Remove unused variable reference? (Throws a JS Hint error)

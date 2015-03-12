@@ -25,17 +25,64 @@ rek.ignore(cfg.dir.cwd);
 cfg.root = __dirname;
 cfg.dest = cfg.dir[cfg.dest];
 
-// Ensure tasks config object or use defaults
-cfg.tasks = cfg.tasks || {};
+var addTasksToConfig = function addTasksToConfig(cfg, tasksType, src, cwd) {
+
+  // Ensure config object or use defaults
+  cfg[tasksType] = cfg[tasksType] || {};
+
+  var taskName;
+  var taskPath;
+  var taskConfig;
+
+  return glob.sync(src, {
+      cwd: cwd
+    })
+    .reduce(function(tasks, filepath) {
+
+      taskName = path.basename(filepath, path.extname(filepath));
+
+      if (taskName === 'index') {
+
+        // Format .../[name]/index.js
+        taskName = path.dirname(filepath);
+
+      } else {
+
+        // Format .../[name].js
+        taskName = path.join(path.dirname(filepath), taskName);
+      }
+
+      taskPath = path.join(cwd, taskName);
+
+      taskConfig = rek(taskPath);
+
+      tasks[taskName] = taskConfig;
+
+      return tasks;
+
+    }, {});
+};
 
 // Merge build task config data
-var taskName;
-var taskConfigs = glob.sync(['**/*.js'], {
-    cwd: './config/tasks'
-  })
-  .reduce(function(tasks, filepath) {
 
-    var taskName = path.basename(filepath, path.extname(filepath));
+var taskConfigs = addTasksToConfig(cfg, 'tasks', ['**/*.js'], './config/tasks');
+
+_.merge(cfg.tasks, taskConfigs);
+
+// Initialize build tasks
+for (task in cfg.tasks) {
+  rek(path.join('build/tasks', task))(gulp, $, cfg, task);
+};
+
+// Ensure tasks config object or use defaults
+cfg.sequences = cfg.sequences || {};
+
+var sequenceConfigs = glob.sync(['**/*.js'], {
+    cwd: './config/sequences'
+  })
+  .reduce(function(sequences, filepath) {
+
+    taskName = path.basename(filepath, path.extname(filepath));
 
     if (taskName === 'index') {
 
@@ -48,17 +95,20 @@ var taskConfigs = glob.sync(['**/*.js'], {
       taskName = path.join(path.dirname(filepath), taskName);
     }
 
-    var taskPath = path.join('config/tasks', taskName);
+    taskPath = path.join('config/sequences', taskName);
 
-    tasks[taskName] = rek(taskPath);
+    taskConfig = rek(taskPath);
+    taskConfig.isSequence = true;
 
-    return tasks;
+    sequences[taskName] = taskConfig;
+
+    return sequences;
 
   }, {});
 
-_.merge(cfg.tasks, taskConfigs);
+_.merge(cfg.sequences, sequenceConfigs);
 
-// Initialize build tasks
-for (task in cfg.tasks) {
-  rek(path.join('build/tasks', task))(gulp, $, cfg, task);
+// Initialize build task sequences
+for (sequence in cfg.sequences) {
+  rek('build/utils/sequencer')(gulp, $, cfg, sequence);
 };
