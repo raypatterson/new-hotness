@@ -18,9 +18,5 @@ module.exports = {
   cwd: cfg.dir.cwd,
   src: ['**/*.js'],
   options: options,
-  reporter: 'jshint-stylish',
-  notify: {
-    title: 'JS Lint',
-    message: 'JS Lint Passed.',
-  }
+  reporter: 'jshint-stylish'
 };

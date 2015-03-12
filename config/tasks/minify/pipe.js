@@ -11,6 +11,6 @@ module.exports = {
   ],
   dest: cfg.dest,
   options: {
-    outputRelativePath: './foo'
+    debugStreamFiles: true
   }
 };

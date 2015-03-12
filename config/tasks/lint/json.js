@@ -9,9 +9,5 @@ module.exports = {
   src: ['**/*.json'],
   options: {
     comments: true
-  },
-  notify: {
-    title: 'JSON Lint',
-    message: 'JSON Lint Passed.',
   }
 };
