@@ -7,7 +7,7 @@ before_install:
   - npm i -g gulp
 
 script:
-  - gulp ci
+  - gulp ci/travis
 
 branches:
   only:
