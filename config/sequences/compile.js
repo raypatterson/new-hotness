@@ -19,8 +19,7 @@ module.exports = {
       'minify/html',
       'minify/css',
       'minify/js'
-    ]
-    // ,
-    // 'process/rev'
+    ],
+    'process/rev'
   ]
 };

@@ -24,6 +24,8 @@ module.exports = function(gulp, $, cfg, id) {
 
           return files.paths.filter(function(path) {
 
+            console.log('path', path);
+
             return path.search(pattern) === -1;
           });
         }, null));

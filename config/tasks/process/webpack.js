@@ -73,6 +73,12 @@ for (page_dir in entry) {
   page_cfg = fs.existsSync(page_cfg_path) ? require(page_cfg_path) : {};
   page_cfg.title = page_cfg.name ? [cfg.name, page_cfg.name].join(' | ') : cfg.name;
 
+
+  var root_path = path.resolve(ROOT_DIR);
+  var page_path = path.resolve(ROOT_DIR, page_dir);
+  var deep_path = page_path === root_path ? '' : path.relative(page_path, root_path) + '/' + path.relative(root_path, page_path);
+
+  var bundle_path = deep_path;
   var usemin_path = path.relative(page_dir, USEMIN_DIR);
   var vendor_path = path.relative(page_dir, VENDOR_DIR);
   var common_path = path.relative(page_dir, COMMON_DIR);
@@ -86,13 +92,13 @@ for (page_dir in entry) {
       usemin: path.join(usemin_path, BUNDLE_FILENAMES.js),
       vendor: path.join(vendor_path, BUNDLE_FILENAMES.js),
       common: path.join(common_path, BUNDLE_FILENAMES.js),
-      bundle: BUNDLE_FILENAMES.js
+      bundle: path.join(bundle_path, BUNDLE_FILENAMES.js),
     },
     css: {
       usemin: path.join(usemin_path, BUNDLE_FILENAMES.css),
       vendor: path.join(vendor_path, BUNDLE_FILENAMES.css),
       common: path.join(common_path, BUNDLE_FILENAMES.css),
-      bundle: BUNDLE_FILENAMES.css
+      bundle: path.join(bundle_path, BUNDLE_FILENAMES.css),
     }
   }));
 };
