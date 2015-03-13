@@ -15,6 +15,7 @@ module.exports = {
     temp: '.tmp', // 'development' build target
     dist: 'dist', // 'production' build target
     // Build 'dest' sub directories
+    usemin: 'usemin', // For files run though the 'usemin' type tasks
     vendor: 'vendor', // Separate 3rd party assets for clarity and to work around certain tasks
     common: 'common', // Assets common to all app entry points
     config: 'config', // Any page or module specific configuration

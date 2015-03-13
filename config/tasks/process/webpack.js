@@ -11,6 +11,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var cfg = rek('config');
 
 var ROOT_DIR = '.';
+var USEMIN_DIR = cfg.dir.usemin;
 var VENDOR_DIR = cfg.dir.vendor;
 var COMMON_DIR = cfg.dir.common;
 var CONFIG_DIR = cfg.dir.config;
@@ -72,6 +73,7 @@ for (page_dir in entry) {
   page_cfg = fs.existsSync(page_cfg_path) ? require(page_cfg_path) : {};
   page_cfg.title = page_cfg.name ? [cfg.name, page_cfg.name].join(' | ') : cfg.name;
 
+  var usemin_path = path.relative(page_dir, USEMIN_DIR);
   var vendor_path = path.relative(page_dir, VENDOR_DIR);
   var common_path = path.relative(page_dir, COMMON_DIR);
 
@@ -81,11 +83,13 @@ for (page_dir in entry) {
     config: page_cfg,
     js: {
       modernizr: path.join(vendor_path, cfg.tasks['process/modernizr'].filename),
+      usemin: path.join(usemin_path, BUNDLE_FILENAMES.js),
       vendor: path.join(vendor_path, BUNDLE_FILENAMES.js),
       common: path.join(common_path, BUNDLE_FILENAMES.js),
       bundle: BUNDLE_FILENAMES.js
     },
     css: {
+      usemin: path.join(usemin_path, BUNDLE_FILENAMES.css),
       vendor: path.join(vendor_path, BUNDLE_FILENAMES.css),
       common: path.join(common_path, BUNDLE_FILENAMES.css),
       bundle: BUNDLE_FILENAMES.css

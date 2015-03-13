@@ -16,7 +16,7 @@ module.exports = {
     '!**/dist/**/*'
   ],
   options: {
-    verbose: true
+    // verbose: true
   },
   dest: cfg.root
 };
