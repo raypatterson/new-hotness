@@ -33,9 +33,5 @@ module.exports = {
     //   ]
     // ]
   },
-  dest: cfg.dest,
-  notify: {
-    title: 'Color Lint',
-    message: 'Color Lint Passed.',
-  }
+  dest: cfg.dest
 };

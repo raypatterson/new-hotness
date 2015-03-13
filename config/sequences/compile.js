@@ -13,13 +13,15 @@ module.exports = {
       'lint/html',
       'lint/css'
     ],
-    'minify/pipe',
-    'process/rev', [
+    // 'minify/pipe',
+    [
       'minify/img',
       'minify/json',
       'minify/html',
       'minify/css',
       'minify/js'
     ]
+    // ,
+    // 'process/rev'
   ]
 };

@@ -9,9 +9,5 @@ module.exports = {
   src: ['**/*.html'],
   options: {
     htmlhintrc: '.htmlhintrc'
-  },
-  notify: {
-    title: 'HTML Lint',
-    message: 'HTML Lint Passed.',
   }
 };

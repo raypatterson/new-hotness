@@ -16,9 +16,5 @@ module.exports = {
   ],
   options: {
     csslintrc: csslintrc
-  },
-  notify: {
-    title: 'CSS Lint',
-    message: 'CSS Lint Passed.',
   }
 };
