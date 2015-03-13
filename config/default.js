@@ -12,5 +12,9 @@ module.exports = {
     hostname: null
   },
 
-  dest: 'dist'
+  dest: 'dist',
+
+  deploy: {
+    dir: 'development'
+  }
 };

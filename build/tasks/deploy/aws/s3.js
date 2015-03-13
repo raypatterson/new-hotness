@@ -24,6 +24,10 @@ module.exports = function(gulp, $, cfg, id) {
       cwd: task_cfg.cwd
     })
 
+    .pipe($.rename(function(path) {
+      path.dirname = [cfg.deploy.dir, path.dirname].join('/');
+    }))
+
     .pipe(parallelize(publisher.publish(headers, {
       // force: true
     }), 50))
