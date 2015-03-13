@@ -9,8 +9,5 @@ module.exports = {
   src: [
     '**/*.html'
   ],
-  dest: cfg.dest,
-  options: {
-    debugStreamFiles: true
-  }
+  dest: cfg.dest
 };

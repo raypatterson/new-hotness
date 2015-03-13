@@ -3,7 +3,7 @@
 |:------|:------:|:------
 | gulpfile.js | 24 | Find a more elegant way of doing this
 | config/index.js | 34 | Decide whether CLI should override process.env
-| config/tasks/process/webpack.js | 28 | Clean up entry creation
+| config/tasks/process/webpack.js | 29 | Clean up entry creation
 | source/static/app/pages/index.js | 12 | Decide where to put images that are referenced this way
 | source/static/app/templates/base.scss | 17 | Decide where to put images that are referenced this way
 

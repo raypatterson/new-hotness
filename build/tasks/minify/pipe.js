@@ -9,16 +9,20 @@ module.exports = function(gulp, $, cfg, id) {
     return gulp.src(task_cfg.src, {
         cwd: task_cfg.cwd
       })
-      .pipe($.pipemin({
-        js: function(stream, concat) {
-          return stream
-            .pipe(concat);
-        },
-        css: function(stream, concat) {
-          return stream
-            .pipe(concat);
-        }
+      .pipe($.foreach(function(stream, file) {
+        return stream
+          .pipe($.pipemin({
+            js: function(stream, concat) {
+              return stream
+                .pipe(concat);
+            },
+            css: function(stream, concat) {
+              return stream
+                .pipe(concat);
+            }
+          }));
       }))
-      .pipe(gulp.dest(task_cfg.dest));
+
+    .pipe(gulp.dest(task_cfg.dest));
   });
 };

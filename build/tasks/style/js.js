@@ -12,6 +12,7 @@ module.exports = function(gulp, $, cfg, id) {
         cwd: task_cfg.cwd
       })
       .pipe($.jscsCustom(task_cfg.options))
-      .pipe($.notify(task_cfg.notify));
+      // .pipe($.notify(task_cfg.notify))
+    ;
   });
 };

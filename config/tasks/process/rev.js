@@ -13,7 +13,7 @@ module.exports = {
   options: {
     hashLength: 16,
     ignore: [
-      /html/g
+      /html$/g
     ]
   },
   manifest: {

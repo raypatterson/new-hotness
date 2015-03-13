@@ -11,6 +11,7 @@ module.exports = function(gulp, $, cfg, id) {
       })
       .pipe($.csslint())
       .pipe($.csslint.reporter())
-      .pipe($.notify(task_cfg.notify));
+      // .pipe($.notify(task_cfg.notify))
+    ;
   });
 };
