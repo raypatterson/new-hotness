@@ -39,6 +39,7 @@ module.exports = function(gulp, $, cfg, id) {
         }
 
       }))
-      .pipe($.notify(task_cfg.notify));
+      // .pipe($.notify(task_cfg.notify))
+    ;
   });
 };
