@@ -31,7 +31,7 @@ module.exports = function(gulp, $, cfg, id) {
 
         process.exit(1);
       })
-      .pipe($.notify(task_cfg.notify))
+      // .pipe($.notify(task_cfg.notify))
       .pipe(gulp.dest(task_cfg.dest));
   });
 };

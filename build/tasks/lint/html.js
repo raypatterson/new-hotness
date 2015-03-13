@@ -12,6 +12,7 @@ module.exports = function(gulp, $, cfg, id) {
       .pipe($.htmlhint(task_cfg.options))
       .pipe($.htmlhint.reporter())
       .pipe($.htmlhint.failReporter())
-      .pipe($.notify(task_cfg.notify));
+      // .pipe($.notify(task_cfg.notify))
+    ;
   });
 };
