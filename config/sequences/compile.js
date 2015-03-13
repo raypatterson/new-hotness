@@ -13,7 +13,7 @@ module.exports = {
     //   'lint/html',
     //   'lint/css'
     // ],
-    'minify/pipe'
+    // 'minify/pipe'
     // [
     // 'minify/img',
     // 'minify/json',
