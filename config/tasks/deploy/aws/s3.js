@@ -5,9 +5,12 @@ var rek = require('rekuire');
 
 var cfg = rek('config');
 
+var options = cfg.plugins.s3.options;
+
 module.exports = {
-  cwd: root,
+  cwd: cfg.dest,
   src: [
-    path.join(cfg.dest, '**')
-  ]
+    '**'
+  ],
+  options: options
 };

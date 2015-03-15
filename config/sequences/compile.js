@@ -14,11 +14,11 @@ module.exports = {
       'lint/css'
     ],
     'minify/pipe', [
-      'minify/img',
-      'minify/json',
       'minify/html',
+      'minify/json',
+      'minify/js',
       'minify/css',
-      'minify/js'
+      'minify/img'
     ],
     'process/rev'
   ]

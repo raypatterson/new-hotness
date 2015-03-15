@@ -3,28 +3,31 @@
 var _ = require('lodash');
 var path = require('path');
 var glob = require('globby');
-
 var gulp = require('gulp');
 
 // Gulp plugins
+
 var $ = require('gulp-load-plugins')({
   camelize: true
 });
 
 // Config data
+
 var cfg = require('./config');
 
 // Eliminate need for icky relative requires
+
 var rek = require('rekuire');
 
 // Module gets confused with same name files
+
 rek.ignore(cfg.dir.cwd);
 
 // Construct dynamic values
 // TODO: Find a more elegant way of doing this
+
 cfg.root = __dirname;
 cfg.dest = cfg.dir[cfg.dest];
-
 
 // Helper functions for adding tasks
 
@@ -41,14 +44,12 @@ var getTasks = function getTasks(src, cwd) {
 
       taskName = path.basename(filepath, path.extname(filepath));
 
-      if (taskName === 'index') {
+      if (taskName === 'index') { // Format is .../[taskName]/index.js
 
-        // Format .../[name]/index.js
         taskName = path.dirname(filepath);
 
-      } else {
+      } else { // Format is .../[taskName].js
 
-        // Format .../[name].js
         taskName = path.join(path.dirname(filepath), taskName);
       }
 

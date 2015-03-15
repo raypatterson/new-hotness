@@ -1,5 +1,4 @@
 var del = require('del');
-var merge = require('merge2');
 var vinylPaths = require('vinyl-paths');
 
 module.exports = function(gulp, $, cfg, id) {
@@ -23,8 +22,6 @@ module.exports = function(gulp, $, cfg, id) {
         del.sync(task_cfg.options.ignore.reduce(function(o, pattern) {
 
           return files.paths.filter(function(path) {
-
-            console.log('path', path);
 
             return path.search(pattern) === -1;
           });

@@ -42,6 +42,7 @@
     "gulp-modify-css-urls": "^0.1.0",
     "gulp-notify": "^2.2.0",
     "gulp-pipemin": "^2.2.2",
+    "gulp-rename": "^1.2.0",
     "gulp-rev-all": "^0.7.6",
     "gulp-sequence": "^0.3.2",
     "gulp-todo": "^2.5.0",

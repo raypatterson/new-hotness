@@ -13,10 +13,11 @@ This is a proving ground for the following features:
 - SASS style formatting
 - Inlined JSON data objects
 - Image optimization
+- Deployment to AWS S3
+- Continuous integration with TravisCI
 
 ## TODO
-- Continuous integration with TravisCI
-- Deployment to AWS S3
+- Deployment to AWS CloudFront
 - Testing with Jest
 - Static typing with Flow
 - Scaffolding with Yeoman
@@ -27,6 +28,7 @@ This is a proving ground for the following features:
 - Removed unused JavaScript with Google Closure Compiler
 
 ### Build Tasks
+- Add version hash to beginning of filename.
 - Image sprites
 - Image conversion (PNG > JPG, PNG > SVG?)
 - Favicon generating

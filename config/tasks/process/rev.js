@@ -1,8 +1,15 @@
 'use-strict';
 
+var _ = require('lodash');
 var rek = require('rekuire');
 
 var cfg = rek('config');
+
+var options = _.clone(cfg.plugins.rev.options);
+
+options.ignore = [
+  /html$/g
+];
 
 module.exports = {
   cwd: cfg.dest,
@@ -10,12 +17,7 @@ module.exports = {
     '**/*.*'
   ],
   dest: cfg.dest,
-  options: {
-    hashLength: 16,
-    ignore: [
-      /html$/g
-    ]
-  },
+  options: options,
   manifest: {
     fileName: 'json/filemap.json'
   },
