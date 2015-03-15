@@ -1,7 +1,5 @@
 'use-strict';
 
-var awspublish = require('gulp-awspublish');
-
 var parallelize = require('concurrent-transform');
 
 module.exports = function(gulp, $, cfg, id) {
@@ -10,12 +8,14 @@ module.exports = function(gulp, $, cfg, id) {
 
     var task_cfg = cfg.tasks[id];
 
-    // create a new publisher
-    var publisher = awspublish.create({
-      bucket: process.env.S3_BUCKET_NAME
+    // Create a new publisher
+
+    var publisher = $.awspublish.create({
+      bucket: task_cfg.options.bucket
     });
 
-    // define custom headers
+    // Define custom headers
+
     var headers = {
       'Cache-Control': 'max-age=315360000, no-transform, public'
     };
@@ -25,20 +25,23 @@ module.exports = function(gulp, $, cfg, id) {
     })
 
     .pipe($.rename(function(path) {
-      path.dirname = [cfg.deploy.dir, path.dirname].join('/');
+
+      path.dirname = [task_cfg.options.dir, path.dirname].join('/');
     }))
 
     .pipe(parallelize(publisher.publish(headers, {
-      // force: true
+      force: true
     }), 50))
 
     .pipe(publisher.sync())
 
-    // create a cache file to speed up consecutive uploads
+    // Create a cache file to speed up consecutive uploads
+
     .pipe(publisher.cache())
 
-    // print upload updates to console
-    .pipe(awspublish.reporter({
+    // Print upload updates to console
+
+    .pipe($.awspublish.reporter({
       // states: [
       //   'create',
       //   'update',

@@ -1,5 +1,4 @@
 var del = require('del');
-var merge = require('merge2');
 var vinylPaths = require('vinyl-paths');
 
 module.exports = function(gulp, $, cfg, id) {
