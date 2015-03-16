@@ -13,8 +13,8 @@ This is a proving ground for the following features:
 - SASS style formatting
 - Inlined JSON data objects
 - Image optimization
-- Deployment to AWS S3
-- Deployment to AWS CloudFront
+- Asset hosting with AWS S3
+- Content delivery with AWS CloudFront
 - Continuous integration with TravisCI
 
 ## TODO
