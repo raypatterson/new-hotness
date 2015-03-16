@@ -73,7 +73,7 @@ for (page_dir in entry) {
   page_cfg = fs.existsSync(page_cfg_path) ? require(page_cfg_path) : {};
   page_cfg.title = page_cfg.name ? [cfg.name, page_cfg.name].join(' | ') : cfg.name;
 
-
+  // FIXME: Dry this up
   var root_path = path.resolve(ROOT_DIR);
   var page_path = path.resolve(ROOT_DIR, page_dir);
   var deep_path = page_path === root_path ? '' : path.relative(page_path, root_path) + '/' + path.relative(root_path, page_path);
@@ -117,6 +117,7 @@ var loaders = [{
   loader: ExtractTextPlugin.extract(
     'style',
     'css?' +
+    // TODO: Enable relative 'url' values in compiled CSS
     // 'root=' + app_dir + // Allows root relative paths in SASS
     '!autoprefixer' +
     '!sass?' +
