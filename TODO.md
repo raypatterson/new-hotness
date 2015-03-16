@@ -10,7 +10,7 @@
 ### FIXMEs
 | Filename | line # | FIXME
 |:------|:------:|:------
-| config/project.js | 60 | Prefix filename with has in order to distribute object requests across S3  partitions
+| config/project.js | 53 | Prefix filename with has in order to distribute object requests across S3  partitions
 | build/utils/sequencer.js | 9 | Something is mutating the parallel task string values into object literals... Maybe the sequence task?
 | build/tasks/process/uncss.js | 59 | Bug goes away, bug comes back. Cannot run in parallel.
 | config/tasks/document/todo.js | 7 | Ironically, the 'src' prop needs some work...

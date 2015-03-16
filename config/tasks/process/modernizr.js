@@ -16,6 +16,7 @@ module.exports = {
   // Adds all tests for 'development' env
   // Detects used tests for 'production' env
   crawl: cfg.env === cfg.env_type.DEVELOPMENT ? false : true,
+  filename: cfg.plugins.modernizr.filename,
   settings: {
     options: [
       'setClasses',

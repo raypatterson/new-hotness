@@ -24,7 +24,7 @@ module.exports = {
     vendor: 'vendor', // Separate 3rd party assets for clarity and to work around certain tasks
     common: 'common', // Assets common to all app entry points
     config: 'config', // Any page or module specific configuration
-    // Asset type specific
+    // Asset type specific directories
     images: 'images',
     fonts: 'fonts',
     data: 'data',
@@ -32,16 +32,9 @@ module.exports = {
     js: 'js'
   },
 
-  tasks: {
-    // Used by Modernizr and webpack tasks
-    'process/modernizr': {
-      filename: 'modernizr.js'
-    }
-  },
-
   plugins: {
 
-    // Used by Modernizr and webpack tasks
+    // Used by Modernizr and webpack task configs
     modernizr: {
       filename: 'modernizr.js'
     },

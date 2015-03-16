@@ -20,6 +20,6 @@ module.exports = {
       'minify/css',
       'minify/img'
     ],
-    'process/rev'
+    'rev/assets'
   ]
 };

@@ -30,7 +30,7 @@ module.exports = function(gulp, $, cfg, id) {
     }))
 
     .pipe(parallelize(publisher.publish(headers, {
-      force: true
+      // force: true
     }), 50))
 
     .pipe(publisher.sync())
