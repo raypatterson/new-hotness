@@ -88,7 +88,7 @@ for (page_dir in entry) {
     filename: path.join(page_dir, BUNDLE_FILENAMES.html),
     config: page_cfg,
     js: {
-      modernizr: path.join(vendor_path, cfg.tasks['process/modernizr'].filename),
+      modernizr: path.join(vendor_path, cfg.plugins.modernizr.filename),
       usemin: path.join(usemin_path, BUNDLE_FILENAMES.js),
       vendor: path.join(vendor_path, BUNDLE_FILENAMES.js),
       common: path.join(common_path, BUNDLE_FILENAMES.js),

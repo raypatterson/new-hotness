@@ -14,10 +14,10 @@ This is a proving ground for the following features:
 - Inlined JSON data objects
 - Image optimization
 - Deployment to AWS S3
+- Deployment to AWS CloudFront
 - Continuous integration with TravisCI
 
 ## TODO
-- Deployment to AWS CloudFront
 - Testing with Jest
 - Static typing with Flow
 - Scaffolding with Yeoman
@@ -32,6 +32,7 @@ This is a proving ground for the following features:
 - Image sprites
 - Image conversion (PNG > JPG, PNG > SVG?)
 - Favicon generating
+- Update from JSHint to ESLint
 - Add complexity, performance, size reports
 - Styling HTML, CSS, JSON
 - Documenting CSS, JS

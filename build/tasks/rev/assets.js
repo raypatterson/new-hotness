@@ -1,9 +1,11 @@
+'use-strict';
+
 var del = require('del');
 var vinylPaths = require('vinyl-paths');
 
 module.exports = function(gulp, $, cfg, id) {
 
-  gulp.task(id, function() {
+  gulp.task(id, function(cb) {
 
     var task_cfg = cfg.tasks[id];
 

@@ -8,20 +8,14 @@ var cfg = rek('config');
 var options = _.clone(cfg.plugins.rev.options);
 
 options.ignore = [
-  /html$/g
+  /(?!.*html)^.*$/gi
 ];
 
 module.exports = {
   cwd: cfg.dest,
   src: [
-    '**/*.*'
+    '**/*.html'
   ],
   dest: cfg.dest,
-  options: options,
-  manifest: {
-    fileName: 'json/filemap.json'
-  },
-  versionFile: {
-    fileName: 'json/versions.json'
-  }
+  options: options
 };
